@@ -77,6 +77,7 @@ while($res = mysqli_fetch_array($result))
 <html>
     <head>
         <title> Edit Cars </title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
     </head>     
     <body>
         <a href="index.php">Home</a>
