@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Add a Car</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
     </head>
     <body>
         <?php
@@ -16,6 +17,8 @@
             $mileage = mysqli_real_escape_string($mysqli, $_POST['mileage']);
             $autoTransmission = mysqli_real_escape_string($mysqli, $_POST['autoTransmission']);
             $drivers = mysqli_real_escape_string($mysqli, $_POST['drivers']);
+            $name = mysqli_real_escape_string($mysqli, $_POST['name']);
+            $driveStick = mysqli_real_escape_string($mysqli, $_POST['driveStick']);
         
             if(empty($make) || empty($model) || empty($year) || empty($plateNumber) || empty($color) || empty($state) || empty($mileage) || empty($autoTransmission)) {
                 if(empty($make)) {
@@ -51,9 +54,9 @@
                 echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
 
             } else {
-                $result = mysqli_query($mysqli, "INSERT INTO Cars(make,model,year,plateNumber,color,state,mileage,autoTransmission,drivers) VALUES('$make','$model','$year','$plateNumber','$color','$state','$mileage','$autoTransmission','$drivers)");
-
-                echo "<font color='green'>Car was added successfully.";
+                $result = mysqli_query($mysqli, "INSERT INTO cars(make,model,year,plateNumber,color,state,mileage,autoTransmission,drivers) VALUES('$make','$model','$year','$plateNumber','$color','$state','$mileage','$autoTransmission','$drivers')");
+                $result2 = mysqli_query($mysqli, "INSERT INTO Drivers(name, driveStick) VALUES('$name','$driveStick')");
+                echo "<font color='green'>Car and Driver was added successfully.";
 		        echo "<br/><a href='index.php'>View Result</a>";
             }
         }
